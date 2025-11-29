@@ -1,61 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="https://cintakasihtzuchi.sch.id/wp-content/uploads/2020/12/Main-Logo.png" width="200" alt="Sekolah Cinta Kasih Tzu Chi Logo" />
 
-## About Laravel
+# Sekolah Cinta Kasih Tzu Chi - PPDB System
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**A Modern, Secure, and Humanist Student Admission Platform**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
+[![Security](https://img.shields.io/badge/Security-Hardened-success?style=for-the-badge&logo=cloudflare)](https://cloudflare.com)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[Features](#-key-features) • [Architecture](#-system-architecture) • [Security](#-security-measures) • [Installation](#-installation-guide)
 
-## Learning Laravel
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📖 Introduction
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The **PPDB (Penerimaan Peserta Didik Baru)** System for Sekolah Cinta Kasih Tzu Chi is a state-of-the-art web application designed to streamline the student admission process. Built with a focus on **User Experience (UX)**, **Security**, and **Performance**, this platform serves thousands of prospective students from Kindergarten (TK) to Vocational High School (SMK).
 
-## Laravel Sponsors
+The system embodies the school's philosophy of *humanist education* by providing a friendly, accessible, and transparent digital experience for parents and students.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🏗 System Architecture
 
-### Premium Partners
+This application is built on a robust monolithic architecture using the **Laravel** framework, ensuring reliability and scalability.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Backend** | Laravel 11 (PHP 8.2+) | Handles business logic, routing, and database interactions. |
+| **Frontend** | Blade + TailwindCSS | Server-side rendering with a modern, utility-first CSS framework for responsive UI. |
+| **Database** | MySQL | Relational database for storing user, candidate, and administrative data. |
+| **Assets** | Vite | Next-generation frontend tooling for blazing fast builds. |
+| **Bot Protection** | Cloudflare Turnstile | Privacy-focused CAPTCHA alternative to prevent automated abuse. |
 
-## Contributing
+## 🛡 Security Measures
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Security is a top priority. We have implemented a multi-layered security strategy to protect user data and application integrity.
 
-## Code of Conduct
+### 🤖 Bot & Abuse Protection
+- **Cloudflare Turnstile**: Integrated into Login and Registration forms to block bots without annoying users.
+- **Honeypot Mechanism**: Hidden fields (`b_field`) trap simple bots that blindly fill forms.
+- **Time-Based Validation**: Forms submitted faster than humanly possible (< 5s) are automatically rejected.
+- **Rate Limiting**: Login endpoints are throttled (5 attempts/min) to prevent brute-force attacks.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🔒 Data Privacy & Integrity
+- **Mass Assignment Protection**: Strict controller logic ensures only validated data is written to the database.
+- **Strict Mode**: Eloquent Strict Mode is enabled in non-production environments to prevent N+1 queries and lazy loading violations.
+- **Input Sanitization**: All user inputs are validated and sanitized to prevent injection attacks.
 
-## Security Vulnerabilities
+### 🌐 Network Security
+- **Security Headers**: A dedicated middleware injects industry-standard security headers:
+    - `X-Content-Type-Options: nosniff`
+    - `X-Frame-Options: SAMEORIGIN`
+    - `X-XSS-Protection: 1; mode=block`
+    - `Referrer-Policy: strict-origin-when-cross-origin`
+    - `Strict-Transport-Security` (HSTS) in production.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🚀 Key Features
 
-## License
+### 🎓 Student Portal
+- **Seamless Registration**: Easy-to-use wizard for account creation and biodata submission.
+- **Real-time Dashboard**: Track application status (Draft -> Submitted -> Verified -> Accepted).
+- **Document Upload**: Secure upload for payment proofs and required documents.
+- **Exam Schedule**: Automatic display of exam dates upon verification.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 👨‍💼 Admin Portal
+- **Candidate Management**: View, filter, and manage all student applications.
+- **Verification Workflow**: One-click verification of data and payment proofs.
+- **Automated Communication**: System automatically sends email notifications and generates PDF Exam Cards upon verification.
+
+## 💻 Installation Guide
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL
+
+### Steps
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/yourusername/ppdb-tzu-chi.git
+    cd ppdb-tzu-chi
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    composer install
+    npm install
+    ```
+
+3.  **Environment Setup**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4.  **Configure Database & Keys**
+    Open `.env` and set your database credentials. Also, add your Cloudflare Turnstile keys:
+    ```env
+    DB_DATABASE=tzu_chi
+    DB_USERNAME=root
+    DB_PASSWORD=
+
+    TURNSTILE_SITE_KEY=your_site_key
+    TURNSTILE_SECRET_KEY=your_secret_key
+    ```
+
+5.  **Run Migrations**
+    ```bash
+    php artisan migrate
+    ```
+
+6.  **Build Assets & Run Server**
+    ```bash
+    npm run build
+    php artisan serve
+    ```
+
+    Visit `http://127.0.0.1:8000` to see the application.
+
+---
+
+<div align="center">
+    <p>Developed with ❤️ for Sekolah Cinta Kasih Tzu Chi</p>
+    <p>&copy; 2025 All Rights Reserved.</p>
+</div>
