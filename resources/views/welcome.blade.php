@@ -13,10 +13,10 @@
     
     <div class="container mx-auto px-6 relative z-10 text-center">
         <div class="animate-fade-in-up">
-            <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-primary font-bold text-sm mb-6 tracking-wider uppercase">Penerimaan Peserta Didik Baru 2025/2026</span>
+            <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-primary font-bold text-sm mb-6 tracking-wider uppercase">{{ __('Penerimaan Peserta Didik Baru 2025/2026') }}</span>
             <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-                Pendidikan Berbudaya <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Humanis</span>
+                {{ __('Pendidikan Berbudaya') }} <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">{{ __('Humanis') }}</span>
             </h1>
             <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
                 "Terwujudnya pendidikan manusia yang seutuhnya yang berlandaskan pada nilai kemanusiaan dan menekankan perkembangan yang seimbang antara intelektual, kebajikan, kearifan, kebersamaan dan keindahan."
@@ -24,12 +24,12 @@
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="{{ route('register') }}" class="group relative px-8 py-4 bg-primary text-white font-bold rounded-full shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                     <span class="relative z-10 flex items-center">
-                        Daftar Sekarang <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        {{ __('Daftar Sekarang') }} <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                     </span>
                     <div class="absolute inset-0 bg-gradient-to-r from-primary-light to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
                 <a href="https://youtu.be/6Qf_Que4QfI" target="_blank" class="px-8 py-4 bg-white text-gray-700 font-bold rounded-full shadow-soft hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 flex items-center">
-                    <i class="fas fa-play-circle text-accent mr-2 text-xl"></i> Tonton Profil Sekolah
+                    <i class="fas fa-play-circle text-accent mr-2 text-xl"></i> {{ __('Tonton Profil Sekolah') }}
                 </a>
             </div>
         </div>
@@ -45,10 +45,10 @@
                 <img src="https://cintakasihtzuchi.sch.id/wp-content/uploads/2024/11/19.-Marcella-Winata-scaled.jpg" alt="Vision" class="rounded-[2rem] shadow-glass relative z-10 transform hover:scale-105 transition duration-500">
             </div>
             <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Visi & Misi Kami</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{{ __('Visi & Misi Kami') }}</h2>
                 <div class="space-y-6">
                     <div class="bg-secondary p-6 rounded-2xl border-l-4 border-primary">
-                        <h3 class="font-bold text-xl text-primary mb-2">Visi</h3>
+                        <h3 class="font-bold text-xl text-primary mb-2">{{ __('Visi') }}</h3>
                         <p class="text-gray-600 italic">"Terwujudnya pendidikan manusia yang seutuhnya yang berlandaskan pada nilai kemanusiaan dan menekankan perkembangan yang seimbang antara intelektual, kebajikan, kearifan, kebersamaan dan keindahan."</p>
                     </div>
                     <ul class="space-y-3">
@@ -75,7 +75,7 @@
 <div class="py-24 bg-secondary relative">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Jenjang Pendidikan</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ __('Jenjang Pendidikan') }}</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan pendidikan berkualitas dari tingkat TK hingga SMK dengan fasilitas lengkap dan kurikulum berstandar.</p>
         </div>
 
@@ -85,14 +85,14 @@
                 <div class="h-48 overflow-hidden relative">
                     <img src="{{ $jenjang['hero'] }}" alt="{{ $jenjang['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <span class="text-white font-bold text-sm">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></span>
+                        <span class="text-white font-bold text-sm">{{ __('Lihat Detail') }} <i class="fas fa-arrow-right ml-1"></i></span>
                     </div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $jenjang['name'] }}</h3>
                     <p class="text-gray-500 text-sm line-clamp-3 mb-4 flex-grow">{{ $jenjang['description'] }}</p>
                     <a href="{{ url('/jenjang/'.$key) }}" class="inline-block w-full text-center py-2 rounded-xl bg-gray-50 text-primary font-bold hover:bg-primary hover:text-white transition-colors">
-                        Selengkapnya
+                        {{ __('Selengkapnya') }}
                     </a>
                 </div>
             </div>
@@ -106,11 +106,11 @@
     <div class="container mx-auto px-6">
         <div class="flex justify-between items-end mb-12">
             <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Berita & Kegiatan</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{{ __('Berita & Kegiatan') }}</h2>
                 <div class="w-20 h-1 bg-accent rounded-full"></div>
             </div>
             <a href="#" class="hidden md:flex items-center text-primary font-bold hover:text-primary-dark transition">
-                Lihat Semua <i class="fas fa-arrow-right ml-2"></i>
+                {{ __('Lihat Semua') }} <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
 
@@ -141,12 +141,12 @@
     <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
     
     <div class="container mx-auto px-6 relative z-10 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Siap Bergabung Bersama Kami?</h2>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">{{ __('Siap Bergabung Bersama Kami?') }}</h2>
         <p class="text-green-100 text-lg mb-10 max-w-2xl mx-auto">
-            Pendaftaran Tahun Ajaran 2025/2026 telah dibuka. Segera daftarkan putra-putri Anda dan jadilah bagian dari keluarga besar Tzu Chi.
+            {{ __('Pendaftaran Tahun Ajaran 2025/2026 telah dibuka. Segera daftarkan putra-putri Anda dan jadilah bagian dari keluarga besar Tzu Chi.') }}
         </p>
         <a href="{{ route('register') }}" class="inline-block px-10 py-4 bg-accent text-primary-dark font-bold rounded-full shadow-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
-            Daftar Sekarang
+            {{ __('Daftar Sekarang') }}
         </a>
     </div>
 </div>

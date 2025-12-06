@@ -60,7 +60,7 @@ class AdminController extends Controller
             // Log::error($e->getMessage());
         }
 
-        Alert::success('Berhasil', 'Status berhasil diperbarui dan notifikasi dikirim.');
+        Alert::success(__('Berhasil'), __('Status berhasil diperbarui dan notifikasi dikirim.'));
         return redirect()->route('admin.dashboard');
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kartu Ujian</title>
+    <title>{{ __('Kartu Ujian') }}</title>
     <style>
         body { font-family: sans-serif; }
         .card { border: 2px solid #327041; padding: 20px; width: 100%; max-width: 600px; margin: 0 auto; }
@@ -16,31 +16,31 @@
 <body>
     <div class="card">
         <div class="header">
-            <h1>KARTU UJIAN</h1>
-            <p>Sekolah Cinta Kasih Tzu Chi</p>
+            <h1>{{ __('KARTU UJIAN') }}</h1>
+            <p>{{ __('Sekolah Cinta Kasih Tzu Chi') }}</p>
         </div>
         
         <div class="content">
             <div class="row">
-                <span class="label">No. Registrasi:</span> {{ $candidate->registration_number }}
+                <span class="label">{{ __('No. Registrasi') }}:</span> {{ $candidate->registration_number }}
             </div>
             <div class="row">
-                <span class="label">Nama Peserta:</span> {{ $candidate->user->name }}
+                <span class="label">{{ __('Nama Peserta') }}:</span> {{ $candidate->user->name }}
             </div>
             <div class="row">
-                <span class="label">Jenjang:</span> {{ $candidate->level }} {{ $candidate->major ? '('.$candidate->major.')' : '' }}
+                <span class="label">{{ __('Jenjang') }}:</span> {{ $candidate->level }} {{ $candidate->major ? '('.$candidate->major.')' : '' }}
             </div>
             <div class="row">
-                <span class="label">Tanggal Ujian:</span> {{ \Carbon\Carbon::parse($candidate->exam_date)->format('d F Y H:i') }}
+                <span class="label">{{ __('Tanggal Ujian') }}:</span> {{ \Carbon\Carbon::parse($candidate->exam_date)->format('d F Y H:i') }}
             </div>
             <div class="row">
-                <span class="label">Lokasi:</span> Gedung Sekolah Cinta Kasih Tzu Chi
+                <span class="label">{{ __('Lokasi') }}:</span> {{ __('Gedung Sekolah Cinta Kasih Tzu Chi') }}
             </div>
         </div>
 
         <div class="footer">
-            <p>Harap membawa kartu ini saat pelaksanaan ujian.</p>
-            <p>Dicetak pada: {{ now()->format('d-m-Y H:i') }}</p>
+            <p>{{ __('Harap membawa kartu ini saat pelaksanaan ujian.') }}</p>
+            <p>{{ __('Dicetak pada') }}: {{ now()->format('d-m-Y H:i') }}</p>
         </div>
     </div>
 </body>

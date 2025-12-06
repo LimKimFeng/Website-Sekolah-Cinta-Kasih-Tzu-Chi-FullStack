@@ -9,6 +9,9 @@ use App\Http\Controllers\CandidateController;
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LanguageController;
+
+Route::get('lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/jenjang/{slug}', [PageController::class, 'jenjang'])->name('jenjang.show');

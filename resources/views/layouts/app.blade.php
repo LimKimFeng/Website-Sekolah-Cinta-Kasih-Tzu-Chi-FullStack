@@ -114,15 +114,15 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <div class="relative group">
                         <button class="text-gray-600 hover:text-primary font-medium transition flex items-center py-2">
-                            Jenjang Pendidikan <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            {{ __('Jenjang Pendidikan') }} <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </button>
                         <!-- Dropdown with bridge -->
                         <div class="absolute left-0 top-full pt-2 w-48 hidden group-hover:block hover:block z-50">
                             <div class="bg-white rounded-xl shadow-glass py-2 border border-gray-100">
-                                <a href="{{ url('/jenjang/tk') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">TK (Taman Kanak-Kanak)</a>
-                                <a href="{{ url('/jenjang/sd') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">SD (Sekolah Dasar)</a>
-                                <a href="{{ url('/jenjang/smp') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">SMP (Sekolah Menengah Pertama)</a>
-                                <a href="{{ url('/jenjang/smk') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">SMK (Sekolah Menengah Kejuruan)</a>
+                                <a href="{{ url('/jenjang/tk') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">{{ __('TK (Taman Kanak-Kanak)') }}</a>
+                                <a href="{{ url('/jenjang/sd') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">{{ __('SD (Sekolah Dasar)') }}</a>
+                                <a href="{{ url('/jenjang/smp') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">{{ __('SMP (Sekolah Menengah Pertama)') }}</a>
+                                <a href="{{ url('/jenjang/smk') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary">{{ __('SMK (Sekolah Menengah Kejuruan)') }}</a>
                             </div>
                         </div>
                     </div>
@@ -130,12 +130,12 @@
                     @auth
                         @if(auth()->user()->role === 'admin')
                             <a href="{{ route('admin.dashboard') }}" class="text-gray-600 hover:text-primary font-medium transition relative group">
-                                Dashboard
+                                {{ __('Dashboard') }}
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         @else
                             <a href="{{ route('student.dashboard') }}" class="text-gray-600 hover:text-primary font-medium transition relative group">
-                                Dashboard
+                                {{ __('Dashboard') }}
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         @endif
@@ -150,18 +150,44 @@
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 transition">
-                                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                            <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Logout') }}
                                         </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('register') }}" class="text-gray-600 hover:text-primary font-medium transition">Pendaftaran</a>
+                        <a href="{{ route('register') }}" class="text-gray-600 hover:text-primary font-medium transition">{{ __('Pendaftaran') }}</a>
                         <a href="{{ route('login') }}" class="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-primary-light text-white font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition duration-300">
-                            Login
+                            {{ __('Login') }}
                         </a>
                     @endauth
+
+                    <!-- Language Switcher -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium transition flex items-center py-2">
+                            <i class="fas fa-globe mr-1"></i> 
+                            @if(app()->getLocale() == 'id') IND
+                            @elseif(app()->getLocale() == 'en') ENG
+                            @elseif(app()->getLocale() == 'zh') 中文
+                            @else IND
+                            @endif
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute right-0 top-full pt-2 w-32 hidden group-hover:block hover:block z-50">
+                            <div class="bg-white rounded-xl shadow-glass py-2 border border-gray-100">
+                                <a href="{{ route('lang.switch', 'id') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary {{ app()->getLocale() == 'id' ? 'bg-green-50 text-primary font-bold' : '' }}">
+                                    <span class="mr-2">🇮🇩</span> IND
+                                </a>
+                                <a href="{{ route('lang.switch', 'en') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary {{ app()->getLocale() == 'en' ? 'bg-green-50 text-primary font-bold' : '' }}">
+                                    <span class="mr-2">🇺🇸</span> ENG
+                                </a>
+                                <a href="{{ route('lang.switch', 'zh') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-primary {{ app()->getLocale() == 'zh' ? 'bg-green-50 text-primary font-bold' : '' }}">
+                                    <span class="mr-2">🇨🇳</span> 中文
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -198,7 +224,7 @@
                         <button type="submit" class="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg">Logout</button>
                     </form>
                 @else
-                    <a href="{{ route('register') }}" class="block px-4 py-2 text-gray-600 hover:bg-green-50 hover:text-primary rounded-lg">Pendaftaran</a>
+                    <a href="{{ route('register') }}" class="block px-4 py-2 text-gray-600 hover:bg-green-50 hover:text-primary rounded-lg">{{ __('Pendaftaran') }}</a>
                     <a href="#" class="block px-4 py-2 text-primary font-bold hover:bg-green-50 rounded-lg">Login</a>
                 @endauth
             </div>
@@ -241,7 +267,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-bold mb-6 text-accent">Kontak Kami</h3>
+                    <h3 class="text-lg font-bold mb-6 text-accent">{{ __('Kontak Kami') }}</h3>
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1.5 mr-3 text-accent"></i>
@@ -263,12 +289,12 @@
                 </div>
 
                 <div>
-                    <h3 class="text-lg font-bold mb-6 text-accent">Jenjang Pendidikan</h3>
+                    <h3 class="text-lg font-bold mb-6 text-accent">{{ __('Jenjang Pendidikan') }}</h3>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="{{ url('/jenjang/tk') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> TK (Taman Kanak-Kanak)</a></li>
-                        <li><a href="{{ url('/jenjang/sd') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> SD (Sekolah Dasar)</a></li>
-                        <li><a href="{{ url('/jenjang/smp') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> SMP (Sekolah Menengah Pertama)</a></li>
-                        <li><a href="{{ url('/jenjang/smk') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> SMK (Sekolah Menengah Kejuruan)</a></li>
+                        <li><a href="{{ url('/jenjang/tk') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> {{ __('TK (Taman Kanak-Kanak)') }}</a></li>
+                        <li><a href="{{ url('/jenjang/sd') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> {{ __('SD (Sekolah Dasar)') }}</a></li>
+                        <li><a href="{{ url('/jenjang/smp') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> {{ __('SMP (Sekolah Menengah Pertama)') }}</a></li>
+                        <li><a href="{{ url('/jenjang/smk') }}" class="hover:text-accent transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> {{ __('SMK (Sekolah Menengah Kejuruan)') }}</a></li>
                     </ul>
                 </div>
             </div>

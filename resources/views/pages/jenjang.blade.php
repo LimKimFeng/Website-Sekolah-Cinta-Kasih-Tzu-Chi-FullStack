@@ -22,8 +22,8 @@
 <div class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Keunggulan Kami</h2>
-            <p class="text-gray-500">Mengapa memilih {{ $data['name'] }}?</p>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('Keunggulan Kami') }}</h2>
+            <p class="text-gray-500">{{ __('Mengapa memilih') }} {{ $data['name'] }}?</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach($data['keunggulan'] as $index => $item)
@@ -44,7 +44,7 @@
     <div class="container mx-auto px-6">
         <div class="flex justify-between items-end mb-12">
             <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-2">Fasilitas</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">{{ __('Fasilitas') }}</h2>
                 <div class="w-20 h-1 bg-accent rounded-full"></div>
             </div>
         </div>
@@ -67,7 +67,7 @@
 <div class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Kegiatan Siswa</h2>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('Kegiatan Siswa') }}</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($data['activities'] as $activity)
@@ -83,9 +83,9 @@
 <!-- CTA -->
 <div class="py-16 bg-primary text-center">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-white mb-6">Bergabunglah Bersama Kami</h2>
+        <h2 class="text-3xl font-bold text-white mb-6">{{ __('Bergabunglah Bersama Kami') }}</h2>
         <a href="{{ route('register') }}" class="inline-block px-10 py-4 bg-accent text-primary-dark font-bold rounded-full shadow-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
-            Daftar Sekarang
+            {{ __('Daftar Sekarang') }}
         </a>
     </div>
 </div>

@@ -29,13 +29,13 @@ class RegisterController extends Controller
         // 2. Time-Based Validation
         $loadTime = Session::get('register_load_time');
         if (!$loadTime || now()->diffInSeconds($loadTime) < 5) { // Reduced to 5s for better UX
-            Alert::error('Error', 'Pengisian terlalu cepat. Sistem mendeteksi aktivitas robot.');
+            Alert::error(__('Error'), __('Pengisian terlalu cepat. Sistem mendeteksi aktivitas robot.'));
             return back()->withErrors(['msg' => 'Pengisian terlalu cepat. Sistem mendeteksi aktivitas robot.'])->withInput();
         }
 
         // 3. Slide-to-Verify
         if ($request->input('is_human_verified') !== 'true') {
-             Alert::error('Error', 'Silakan geser slider verifikasi.');
+             Alert::error(__('Error'), __('Silakan geser slider verifikasi.'));
              return back()->withErrors(['msg' => 'Silakan geser slider verifikasi.'])->withInput();
         }
 
@@ -46,7 +46,7 @@ class RegisterController extends Controller
         ]);
 
         if (!$response->json()['success']) {
-            Alert::error('Error', 'Validasi Turnstile gagal. Silakan coba lagi.');
+            Alert::error(__('Error'), __('Validasi Turnstile gagal. Silakan coba lagi.'));
             return back()->withErrors(['msg' => 'Validasi Turnstile gagal.'])->withInput();
         }
 
@@ -76,7 +76,7 @@ class RegisterController extends Controller
         // Login user
         auth()->login($user);
 
-        Alert::success('Berhasil', 'Selamat Bergabung, silakan lengkapi formulir.');
+        Alert::success(__('Berhasil'), __('Selamat Bergabung, silakan lengkapi formulir.'));
 
         return redirect()->route('student.dashboard');
     }

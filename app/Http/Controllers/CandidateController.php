@@ -31,7 +31,7 @@ class CandidateController extends Controller
         // Time-Based Validation (Strict Mode > 60s) - Disabled
         // $loadTime = Session::get('biodata_load_time');
         // if (!$loadTime || now()->diffInSeconds($loadTime) < 60) {
-        //     Alert::error('Error', 'Terlalu cepat! Mohon periksa kembali data Anda sebelum menyimpan.');
+        //     Alert::error(__('Error'), __('Terlalu cepat! Mohon periksa kembali data Anda sebelum menyimpan.'));
         //     return back();
         // }
 
@@ -66,7 +66,7 @@ class CandidateController extends Controller
             $candidate->update(['status' => 'submitted']);
         }
 
-        Alert::success('Berhasil', 'Biodata berhasil disimpan.');
+        Alert::success(__('Berhasil'), __('Biodata berhasil disimpan.'));
         return redirect()->route('student.dashboard');
     }
 
@@ -97,7 +97,7 @@ class CandidateController extends Controller
             // So status remains submitted until admin verifies.
         }
 
-        Alert::success('Berhasil', 'Bukti pembayaran berhasil diupload.');
+        Alert::success(__('Berhasil'), __('Bukti pembayaran berhasil diupload.'));
         return redirect()->route('student.dashboard');
     }
 }

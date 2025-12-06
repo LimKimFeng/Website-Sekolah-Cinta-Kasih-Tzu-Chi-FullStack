@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Verifikasi Siswa - Admin Panel')
+@section('title', __('Verifikasi Siswa') . ' - Admin Panel')
 
 @section('content')
 <div class="max-w-6xl mx-auto">
@@ -9,11 +9,11 @@
             <div class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center mr-3 shadow-sm group-hover:shadow-md group-hover:border-primary transition-all">
                 <i class="fas fa-arrow-left text-sm group-hover:-translate-x-1 transition-transform"></i>
             </div>
-            <span class="font-bold">Kembali ke Dashboard</span>
+            <span class="font-bold">{{ __('Kembali ke Dashboard') }}</span>
         </a>
         
         <div class="flex items-center space-x-3">
-            <span class="text-sm text-gray-500 font-bold uppercase tracking-wider">Status Saat Ini:</span>
+            <span class="text-sm text-gray-500 font-bold uppercase tracking-wider">{{ __('Status Saat Ini:') }}</span>
             @php
                 $statusClasses = [
                     'draft' => 'bg-yellow-100 text-yellow-700 border-yellow-200',
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="text-right hidden sm:block">
-                        <div class="text-sm text-gray-500 mb-1">Jenjang Pendidikan</div>
+                        <div class="text-sm text-gray-500 mb-1">{{ __('Jenjang Pendidikan') }}</div>
                         <div class="text-xl font-bold text-gray-900">{{ $candidate->level }}</div>
                         @if($candidate->major)
                             <div class="text-sm font-bold text-accent bg-yellow-50 px-2 py-1 rounded-lg inline-block mt-1 border border-yellow-100">
@@ -73,7 +73,7 @@
                     <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mr-3 text-sm">
                         <i class="fas fa-user"></i>
                     </div>
-                    Biodata Lengkap
+                    {{ __('Biodata Lengkap') }}
                 </h3>
 
                 @if($candidate->profile)
@@ -87,7 +87,7 @@
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->gender == 'L' ? 'Laki-laki' : 'Perempuan' }}</div>
                         </div>
                         <div class="group">
-                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Tempat, Tanggal Lahir</label>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ __('Tempat, Tanggal Lahir') }}</label>
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->place_of_birth }}, {{ $candidate->profile->date_of_birth }}</div>
                         </div>
                         <div class="group">
@@ -95,7 +95,7 @@
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->religion }}</div>
                         </div>
                         <div class="group md:col-span-2">
-                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Alamat</label>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ __('Alamat') }}</label>
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->address }}</div>
                         </div>
                         <div class="group">
@@ -107,7 +107,7 @@
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->mother_name }}</div>
                         </div>
                         <div class="group">
-                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">No. Telepon</label>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ __('No. Telepon') }}</label>
                             <div class="font-semibold text-gray-900 text-lg">{{ $candidate->profile->phone }}</div>
                         </div>
                     </div>
@@ -116,8 +116,8 @@
                         <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 text-red-500">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
-                        <p class="font-bold text-red-800">Biodata Belum Lengkap</p>
-                        <p class="text-red-600 text-sm">Siswa belum mengisi formulir biodata.</p>
+                        <p class="font-bold text-red-800">{{ __('Biodata Belum Lengkap') }}</p>
+                        <p class="text-red-600 text-sm">{{ __('Siswa belum mengisi formulir biodata.') }}</p>
                     </div>
                 @endif
             </div>
@@ -128,7 +128,7 @@
                     <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mr-3 text-sm">
                         <i class="fas fa-file-alt"></i>
                     </div>
-                    Dokumen Pendukung
+                    {{ __('Dokumen Pendukung') }}
                 </h3>
 
                 @if($candidate->documents->count() > 0)
@@ -160,7 +160,7 @@
                 @else
                     <div class="text-center py-10 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50">
                         <i class="fas fa-folder-open text-3xl text-gray-300 mb-3"></i>
-                        <p class="text-gray-500 font-medium">Belum ada dokumen yang diupload.</p>
+                        <p class="text-gray-500 font-medium">{{ __('Belum ada dokumen yang diupload.') }}</p>
                     </div>
                 @endif
             </div>
@@ -172,7 +172,7 @@
                 <div class="bg-gray-900 p-6 text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-primary opacity-20 rounded-full blur-3xl -mr-10 -mt-10"></div>
                     <h3 class="text-lg font-bold relative z-10 flex items-center">
-                        <i class="fas fa-cog mr-2 text-accent"></i> Panel Verifikasi
+                        <i class="fas fa-cog mr-2 text-accent"></i> {{ __('Panel Verifikasi') }}
                     </h3>
                 </div>
                 
@@ -181,7 +181,7 @@
                     @method('PUT')
 
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Update Status</label>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('Update Status') }}</label>
                         <div class="relative">
                             <select name="status" class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white focus:ring-0 transition-all outline-none appearance-none font-medium text-gray-800">
                                 <option value="draft" {{ $candidate->status == 'draft' ? 'selected' : '' }}>Draft</option>
@@ -199,22 +199,22 @@
                     <div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Tanggal</label>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">{{ __('Tanggal') }}</label>
                                 <input type="date" name="exam_date_date" value="{{ $candidate->exam_date ? $candidate->exam_date->format('Y-m-d') : '' }}" class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white focus:ring-0 transition-all outline-none font-medium text-gray-800">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Jam</label>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">{{ __('Jam') }}</label>
                                 <input type="time" name="exam_date_time" value="{{ $candidate->exam_date ? $candidate->exam_date->format('H:i') : '' }}" class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white focus:ring-0 transition-all outline-none font-medium text-gray-800">
                             </div>
                         </div>
                         <p class="text-xs text-gray-400 mt-2 flex items-center">
-                            <i class="fas fa-info-circle mr-1"></i> Wajib diisi jika status <strong>Verified</strong>
+                            <i class="fas fa-info-circle mr-1"></i> {{ __('Wajib diisi jika status') }} <strong>Verified</strong>
                         </p>
                     </div>
 
                     <div class="pt-4 border-t border-gray-100">
                         <button type="submit" class="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all transform hover:-translate-y-1 flex justify-center items-center group">
-                            <span class="mr-2">Simpan & Kirim Notifikasi</span>
+                            <span class="mr-2">{{ __('Simpan & Kirim Notifikasi') }}</span>
                             <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>

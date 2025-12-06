@@ -17,7 +17,7 @@ class AuthController extends Controller
         // Rate Limiting
         if (\Illuminate\Support\Facades\RateLimiter::tooManyAttempts('login:' . $request->ip(), 5)) {
             $seconds = \Illuminate\Support\Facades\RateLimiter::availableIn('login:' . $request->ip());
-            \RealRashid\SweetAlert\Facades\Alert::error('Terlalu Banyak Percobaan', 'Silakan coba lagi dalam ' . $seconds . ' detik.');
+            \RealRashid\SweetAlert\Facades\Alert::error(__('Terlalu Banyak Percobaan'), __('Silakan coba lagi dalam') . ' ' . $seconds . ' ' . __('detik.'));
             return back()->withErrors(['email' => 'Terlalu banyak percobaan login.'])->onlyInput('email');
         }
 
@@ -28,7 +28,7 @@ class AuthController extends Controller
         ]);
 
         if (!$response->json()['success']) {
-            \RealRashid\SweetAlert\Facades\Alert::error('Error', 'Validasi Turnstile gagal. Silakan coba lagi.');
+            \RealRashid\SweetAlert\Facades\Alert::error(__('Error'), __('Validasi Turnstile gagal. Silakan coba lagi.'));
             return back()->withErrors(['msg' => 'Validasi Turnstile gagal.'])->withInput();
         }
 
@@ -41,7 +41,7 @@ class AuthController extends Controller
             \Illuminate\Support\Facades\RateLimiter::clear('login:' . $request->ip());
             $request->session()->regenerate();
 
-            \RealRashid\SweetAlert\Facades\Alert::toast('Selamat datang kembali, ' . Auth::user()->name, 'success');
+            \RealRashid\SweetAlert\Facades\Alert::toast(__('Selamat datang kembali') . ', ' . Auth::user()->name, 'success');
 
             if (Auth::user()->role === 'admin') {
                 return redirect()->intended(route('admin.dashboard'));
@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         \Illuminate\Support\Facades\RateLimiter::hit('login:' . $request->ip());
 
-        \RealRashid\SweetAlert\Facades\Alert::error('Gagal Masuk', 'Email atau password yang Anda masukkan salah.');
+        \RealRashid\SweetAlert\Facades\Alert::error(__('Gagal Masuk'), __('Email atau password yang Anda masukkan salah.'));
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',

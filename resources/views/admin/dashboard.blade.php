@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Dashboard - Sekolah Cinta Kasih Tzu Chi')
+@section('title', __('Admin Dashboard') . ' - Sekolah Cinta Kasih Tzu Chi')
 
 @section('content')
 <div class="max-w-7xl mx-auto">
     <div class="flex justify-between items-end mb-8">
         <div>
-            <h1 class="text-3xl font-bold text-gray-800">Dashboard Admin</h1>
-            <p class="text-gray-500 mt-1">Kelola data pendaftaran siswa baru.</p>
+            <h1 class="text-3xl font-bold text-gray-800">{{ __('Dashboard Admin') }}</h1>
+            <p class="text-gray-500 mt-1">{{ __('Kelola data pendaftaran siswa baru.') }}</p>
         </div>
         <div class="bg-white px-6 py-3 rounded-2xl shadow-soft border border-gray-100 flex items-center">
             <div class="w-10 h-10 rounded-full bg-green-100 text-primary flex items-center justify-center mr-3">
                 <i class="fas fa-users"></i>
             </div>
             <div>
-                <span class="block text-xs text-gray-500 font-bold uppercase">Total Pendaftar</span>
+                <span class="block text-xs text-gray-500 font-bold uppercase">{{ __('Total Pendaftar') }}</span>
                 <span class="text-xl font-bold text-gray-800">{{ $candidates->total() }}</span>
             </div>
         </div>
@@ -25,11 +25,11 @@
             <table class="w-full">
                 <thead>
                     <tr class="bg-gray-50 text-left">
-                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider">Siswa</th>
-                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider">Jenjang</th>
-                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Status</th>
-                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Tanggal</th>
-                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Aksi</th>
+                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider">{{ __('Siswa') }}</th>
+                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider">{{ __('Jenjang') }}</th>
+                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">{{ __('Status') }}</th>
+                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">{{ __('Tanggal') }}</th>
+                        <th class="px-8 py-6 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">{{ __('Aksi') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
